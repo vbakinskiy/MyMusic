@@ -1,5 +1,5 @@
 //
-//  SearchViewController.swift
+//  SearchMusicViewController.swift
 //  MyMusic
 //
 //  Created by Vyacheslav Bakinskiy on 6/22/20.
@@ -15,9 +15,10 @@ struct TrackModel {
     var artistName: String
 }
 
-class SearchViewController: UITableViewController {
+class SearchMusicViewController: UITableViewController {
     
     private var timer: Timer?
+    var networkService = NetworkService()
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -50,27 +51,15 @@ class SearchViewController: UITableViewController {
     }
 }
 
-extension SearchViewController: UISearchBarDelegate {
+extension SearchMusicViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-            let url = "https://itunes.apple.com/search"
-            let parameters = ["term": "\(searchText)", "limit": "10"]
-            AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).response { (response) in
-                if let error = response.error {
-                    print("Response error: \(error.localizedDescription)")
-                    return
-                }
-                guard let data = response.data else { return }
-                let decoder = JSONDecoder()
-                do {
-                    let objects = try decoder.decode(SearchResponse.self, from: data)
-                    self.tracks = objects.results
-                    self.tableView.reloadData()
-                } catch let error {
-                    print("Data error: \(error.localizedDescription)")
-                }
+            self.networkService.fetchTracks(searchText: searchText) { [weak self] (searchResults) in
+                guard let self = self, let searchResults = searchResults else { return }
+                self.tracks = searchResults.results
+                self.tableView.reloadData()
             }
         })
     }
