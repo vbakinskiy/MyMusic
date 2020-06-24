@@ -8,6 +8,8 @@
 
 import UIKit
 
+let secondarySystemColor: UIColor = #colorLiteral(red: 0, green: 0.568627451, blue: 0.5764705882, alpha: 1)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

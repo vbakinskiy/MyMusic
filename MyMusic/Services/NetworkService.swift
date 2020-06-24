@@ -13,7 +13,7 @@ class NetworkService {
     
     func fetchTracks(searchText: String, completion: @escaping (SearchResponse?)->()) {
         let url = "https://itunes.apple.com/search"
-        let parameters = ["term": "\(searchText)", "limit": "10", "media": "music"]
+        let parameters = ["term": "\(searchText)", "limit": "25", "media": "music"]
         AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).response { (response) in
             if let error = response.error {
                 print("Response error: \(error.localizedDescription)")
@@ -24,6 +24,7 @@ class NetworkService {
             let decoder = JSONDecoder()
             do {
                 let objects = try decoder.decode(SearchResponse.self, from: data)
+                print(objects)
                 completion(objects)
             } catch let error {
                 print("Data error: \(error.localizedDescription)")
