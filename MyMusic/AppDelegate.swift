@@ -13,8 +13,6 @@ let secondarySystemColor: UIColor = #colorLiteral(red: 0, green: 0.568627451, bl
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

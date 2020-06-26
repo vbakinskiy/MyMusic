@@ -13,10 +13,72 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8q-w4-Lxo">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFg-23-6mK">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="D8Z-z4-kl2"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aH2-gl-uE1">
+                            <rect key="frame" x="8" y="8" width="359" height="48"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OC5-k5-qgR">
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="48" id="t5m-1y-EdF"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSv-Ht-xMo">
+                                    <rect key="frame" x="64" y="0.0" width="175" height="48"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OB-bp-BrK">
+                                    <rect key="frame" x="255" y="0.0" width="44" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="A02-R1-TX5"/>
+                                    </constraints>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <state key="normal" image="pause"/>
+                                    <connections>
+                                        <action selector="playPauseButtonPressed:" destination="eFe-4m-Bhb" eventType="touchUpInside" id="1q8-bx-jr8"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSO-Ps-QXp">
+                                    <rect key="frame" x="315" y="0.0" width="44" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="fAj-00-OHP"/>
+                                    </constraints>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <state key="normal" image="Right"/>
+                                    <connections>
+                                        <action selector="nextTrackButtonPressed:" destination="eFe-4m-Bhb" eventType="touchUpInside" id="Czk-Ib-EKv"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="JFg-23-6mK" secondAttribute="trailing" id="DgM-6e-Ogy"/>
+                        <constraint firstItem="JFg-23-6mK" firstAttribute="top" secondItem="c8q-w4-Lxo" secondAttribute="top" id="Z6D-6k-gza"/>
+                        <constraint firstItem="JFg-23-6mK" firstAttribute="leading" secondItem="c8q-w4-Lxo" secondAttribute="leading" id="a8E-1r-Uwz"/>
+                        <constraint firstItem="aH2-gl-uE1" firstAttribute="leading" secondItem="c8q-w4-Lxo" secondAttribute="leading" constant="8" id="jWh-Zj-DFp"/>
+                        <constraint firstAttribute="height" constant="64" id="sgL-nh-kaF"/>
+                        <constraint firstItem="aH2-gl-uE1" firstAttribute="top" secondItem="c8q-w4-Lxo" secondAttribute="top" constant="8" id="skv-i2-ROW"/>
+                        <constraint firstAttribute="trailing" secondItem="aH2-gl-uE1" secondAttribute="trailing" constant="8" id="vQM-fu-2mJ"/>
+                        <constraint firstAttribute="bottom" secondItem="aH2-gl-uE1" secondAttribute="bottom" constant="8" id="zRK-xP-25i"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GMG-Z7-CXB">
                     <rect key="frame" x="30" y="0.0" width="315" height="637"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLw-Ac-fRr">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLw-Ac-fRr">
                             <rect key="frame" x="0.0" y="0.0" width="315" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="JVu-oH-sfQ"/>
@@ -135,8 +197,11 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="c8q-w4-Lxo" firstAttribute="top" secondItem="zZ2-V5-fV5" secondAttribute="top" id="8Wv-lx-D43"/>
                 <constraint firstItem="zZ2-V5-fV5" firstAttribute="bottom" secondItem="GMG-Z7-CXB" secondAttribute="bottom" constant="30" id="Cbz-8d-lmt"/>
                 <constraint firstItem="GMG-Z7-CXB" firstAttribute="leading" secondItem="zZ2-V5-fV5" secondAttribute="leading" constant="30" id="EcE-jP-jvr"/>
+                <constraint firstItem="c8q-w4-Lxo" firstAttribute="leading" secondItem="zZ2-V5-fV5" secondAttribute="leading" id="PJj-eY-mID"/>
+                <constraint firstItem="zZ2-V5-fV5" firstAttribute="trailing" secondItem="c8q-w4-Lxo" secondAttribute="trailing" id="gW0-gb-zPc"/>
                 <constraint firstItem="GMG-Z7-CXB" firstAttribute="top" secondItem="zZ2-V5-fV5" secondAttribute="top" id="pAn-We-lAE"/>
                 <constraint firstItem="zZ2-V5-fV5" firstAttribute="trailing" secondItem="GMG-Z7-CXB" secondAttribute="trailing" constant="30" id="zuO-1B-McI"/>
             </constraints>
@@ -146,6 +211,12 @@
                 <outlet property="currentTimeLabel" destination="y49-fV-lql" id="atI-Av-oJa"/>
                 <outlet property="currentTimeSlider" destination="Tqo-GO-BuO" id="W1d-9l-Jiv"/>
                 <outlet property="durationLabel" destination="wJA-FY-MXO" id="W5h-Cp-hLC"/>
+                <outlet property="maximizedStackView" destination="GMG-Z7-CXB" id="yiH-3O-IGd"/>
+                <outlet property="miniNextTrackButton" destination="gSO-Ps-QXp" id="rax-kC-AIY"/>
+                <outlet property="miniPlayPauseButton" destination="3OB-bp-BrK" id="Jgc-Si-fv3"/>
+                <outlet property="miniTrackImageView" destination="OC5-k5-qgR" id="rbu-8w-RAs"/>
+                <outlet property="miniTrackNameLabel" destination="VSv-Ht-xMo" id="cZm-kd-ckB"/>
+                <outlet property="miniTrackView" destination="c8q-w4-Lxo" id="Cl4-Ty-67a"/>
                 <outlet property="nextTrackButton" destination="Ma7-2T-VHP" id="B3F-EI-edr"/>
                 <outlet property="playPauseButton" destination="8yZ-s3-5x3" id="Tsp-kT-ugq"/>
                 <outlet property="previousTrackButton" destination="AXb-u6-cxI" id="AG6-bp-QuB"/>
@@ -162,6 +233,7 @@
         <image name="IconMax" width="17" height="17"/>
         <image name="Left" width="34" height="20"/>
         <image name="Right" width="34" height="20"/>
+        <image name="pause" width="57" height="57"/>
         <image name="play" width="59" height="59"/>
     </resources>
 </document>
