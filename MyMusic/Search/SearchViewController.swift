@@ -71,7 +71,6 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     func displayData(viewModel: Search.Model.ViewModel.ViewModelData) {
         switch viewModel {
         case .displayTracks(let searchViewModel):
-            print("viewController .displayTracks")
             self.searchViewModel = searchViewModel
             tableView.reloadData()
             footerView.hideActivityIndicator()

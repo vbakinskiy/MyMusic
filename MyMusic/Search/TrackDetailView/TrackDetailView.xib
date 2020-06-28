@@ -83,6 +83,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="JVu-oH-sfQ"/>
                             </constraints>
+                            <color key="tintColor" red="0.76917761559999998" green="0.78413432839999997" blue="0.80152535439999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="Drag Down"/>
                             <connections>
                                 <action selector="dragDownButtonPressed:" destination="eFe-4m-Bhb" eventType="touchUpInside" id="Vtk-c8-Wmr"/>
