@@ -148,7 +148,6 @@ class TrackDetailView: UIView {
                            options: .curveEaseOut,
                            animations: {
                             self.maximizedStackView.transform = .identity
-                            self.transform = .identity
                             if translation.y > 50 {
                                 self.tabBarDelegate?.minimizeTrackDetailController()
                             }

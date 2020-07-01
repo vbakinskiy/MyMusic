@@ -40,9 +40,26 @@
                         <color key="textColor" red="0.49411764705882355" green="0.49411764705882355" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJK-pb-NIT">
+                        <rect key="frame" x="374" y="34" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="Add"/>
+                        <connections>
+                            <action selector="addTrackButtonPressed:" destination="FPc-wx-Cst" eventType="touchUpInside" id="RZF-4c-GCh"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6h-1l-czA">
+                        <rect key="frame" x="326" y="12" width="34" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Look"/>
+                        <connections>
+                            <action selector="showInfo:" destination="FPc-wx-Cst" eventType="touchUpInside" id="38C-NB-qu1"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addTrackButton" destination="cJK-pb-NIT" id="Jyb-9H-gZB"/>
                 <outlet property="artistNameLabel" destination="g7v-j3-XVN" id="nvi-zR-hfS"/>
                 <outlet property="collectionNameLabel" destination="BmN-OD-YoF" id="dih-Ww-JPx"/>
                 <outlet property="trackImageView" destination="bfA-BI-ARi" id="WZz-du-lGt"/>
@@ -51,4 +68,7 @@
             <point key="canvasLocation" x="-136.23188405797103" y="50.892857142857139"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Add" width="16" height="16"/>
+    </resources>
 </document>
