@@ -48,14 +48,6 @@
                             <action selector="addTrackButtonPressed:" destination="FPc-wx-Cst" eventType="touchUpInside" id="RZF-4c-GCh"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6h-1l-czA">
-                        <rect key="frame" x="326" y="12" width="34" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Look"/>
-                        <connections>
-                            <action selector="showInfo:" destination="FPc-wx-Cst" eventType="touchUpInside" id="38C-NB-qu1"/>
-                        </connections>
-                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>

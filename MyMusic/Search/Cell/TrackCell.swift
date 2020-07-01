@@ -40,6 +40,18 @@ class TrackCell: UITableViewCell {
     
     func set(viewModel: SearchViewModel.Cell) {
         self.cell = viewModel
+        
+        let savedTracks = UserDefaults.standard.getSavedTracks()
+        let hasfavorite = savedTracks.firstIndex(where: {
+            $0.trackName == self.cell?.trackName &&
+                $0.artistName == self.cell?.artistName
+        }) != nil
+        if hasfavorite {
+            addTrackButton.isHidden = true
+        } else {
+            addTrackButton.isHidden = false
+        }
+        
         trackNameLabel.text = viewModel.trackName
         artistNameLabel.text = viewModel.artistName
         collectionNameLabel.text = viewModel.collectionName
@@ -49,18 +61,25 @@ class TrackCell: UITableViewCell {
     }
     @IBAction func addTrackButtonPressed(_ sender: Any) {
         let defaults = UserDefaults.standard
-        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: cell.self, requiringSecureCoding: false) {
-            print("Успешно!")
-            defaults.set(savedData, forKey: "tracks")
+        guard let cell = cell else { return }
+        var listOfTracks = defaults.getSavedTracks()
+        
+        listOfTracks.append(cell)
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: listOfTracks.self, requiringSecureCoding: false) {
+            defaults.set(savedData, forKey: UserDefaults.trackKey)
         }
+        
+        addTrackButton.isHidden = true
     }
     
-    @IBAction func showInfo(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        if let savedTracks = defaults.object(forKey: "tracks") as? Data {
-            if let decodedTracks = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedTracks) as? SearchViewModel.Cell {
-                print("Decoded Track name: \(decodedTracks.trackName)")
-            }
-        }
-    }
+    //@IBAction func showInfo(_ sender: Any) {
+    //    let defaults = UserDefaults.standard
+    //    if let savedTracks = defaults.object(forKey: UserDefaults.trackKey) as? Data {
+    //        if let decodedTracks = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedTracks) as? [SearchViewModel.Cell] {
+    //            decodedTracks.map { (track) in
+    //                print(track.trackName)
+    //            }
+    //        }
+    //    }
+    //}
 }
