@@ -15,13 +15,16 @@ struct Library: View {
     @State private var showAlert = false
     @State private var track: SearchViewModel.Cell!
     
+    var tabBarDelegate: MainTabBarControllerDelegate?
+    
     var body: some View {
         NavigationView {
             VStack {
                 GeometryReader { geometry in
                     HStack(spacing: 10) {
                         Button(action: {
-                            print("12345")
+                            self.track = self.tracks[0]
+                            self.tabBarDelegate?.maximizeTrackDetailController(viewModel: self.track)
                         }, label: {
                             Image(systemName: "play.fill")
                                 .frame(width: geometry.size.width / 2 - 10, height: 50)
@@ -30,7 +33,7 @@ struct Library: View {
                                 .cornerRadius(10)
                         })
                         Button(action: {
-                            print("54321")
+                            self.tracks = UserDefaults.standard.getSavedTracks()
                         }, label: {
                             Image(systemName: "arrow.2.circlepath")
                                 .frame(width: geometry.size.width / 2 - 10, height: 50)
@@ -47,7 +50,10 @@ struct Library: View {
                         LibraryCell(cell: track).gesture(LongPressGesture().onEnded({ (_tracks) in
                             self.track = track
                             self.showAlert = true
-                        }))
+                        }).simultaneously(with: TapGesture().onEnded({ _ in
+                            self.track = track
+                            self.tabBarDelegate?.maximizeTrackDetailController(viewModel: self.track)
+                        })))
                     }.onDelete(perform: delete)
                 }
             }.actionSheet(isPresented: $showAlert, content: { () -> ActionSheet in
