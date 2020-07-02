@@ -11,7 +11,9 @@ import URLImage
 
 struct Library: View {
     
-    var tracks = UserDefaults.standard.getSavedTracks()
+    @State var tracks = UserDefaults.standard.getSavedTracks()
+    @State private var showAlert = false
+    @State private var track: SearchViewModel.Cell!
     
     var body: some View {
         NavigationView {
@@ -40,39 +42,67 @@ struct Library: View {
                 }.padding().frame(height: 50)
                 Divider().padding(.leading).padding(.trailing)
                 
-                List(tracks) { track in
-                    LibraryCell(cell: track)
+                List {
+                    ForEach (tracks) { track in
+                        LibraryCell(cell: track).gesture(LongPressGesture().onEnded({ (_tracks) in
+                            self.track = track
+                            self.showAlert = true
+                        }))
+                    }.onDelete(perform: delete)
+                }
+            }.actionSheet(isPresented: $showAlert, content: { () -> ActionSheet in
+                ActionSheet(title: Text("Do you want to delete this track?"), buttons: [.destructive(Text("Delete"), action: {
+                    self.delete(track: self.track)
+                }),.cancel()] )
+            })
+                .navigationBarTitle("Library")
+        }
+    }
+    
+    func delete(at offsets: IndexSet) {
+        tracks.remove(atOffsets: offsets)
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: tracks, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: UserDefaults.trackKey)
+        }
+    }
+    
+    func delete(track: SearchViewModel.Cell) {
+        let index = tracks.firstIndex(of: track)
+        guard let myIndex = index else { return }
+        tracks.remove(at: myIndex)
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: tracks, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: UserDefaults.trackKey)
+        }
+    }
+    
+    
+    struct LibraryCell: View {
+        
+        var cell: SearchViewModel.Cell
+        
+        var body: some View {
+            HStack {
+                URLImage(URL(string: cell.iconUrlString ?? "")!) { proxy in
+                    proxy.image
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .cornerRadius(2)
+                }
+                VStack(alignment: .leading) {
+                    Text("\(cell.trackName)")
+                    Text("\(cell.artistName)")
                 }
             }
-            .navigationBarTitle("Library")
         }
     }
-}
-
-struct LibraryCell: View {
     
-    var cell: SearchViewModel.Cell
     
-    var body: some View {
-        HStack {
-            URLImage(URL(string: cell.iconUrlString ?? "")!) { proxy in
-                proxy.image
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    .cornerRadius(2)
-            }
-            VStack(alignment: .leading) {
-                Text("\(cell.trackName)")
-                Text("\(cell.artistName)")
-            }
+    struct Library_Previews: PreviewProvider {
+        
+        static var previews: some View {
+            Library()
         }
-    }
-}
-
-
-struct Library_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        Library()
     }
 }
