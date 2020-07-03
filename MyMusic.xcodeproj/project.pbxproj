@@ -13,12 +13,10 @@
 		1D5D9B8424A5C3F0008CA1AC /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D9B8324A5C3F0008CA1AC /* Nib.swift */; };
 		1D64089324A094FA00BD14FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D64089224A094FA00BD14FF /* AppDelegate.swift */; };
 		1D64089524A094FA00BD14FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D64089424A094FA00BD14FF /* SceneDelegate.swift */; };
-		1D64089724A094FA00BD14FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D64089624A094FA00BD14FF /* ViewController.swift */; };
 		1D64089A24A094FA00BD14FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D64089824A094FA00BD14FF /* Main.storyboard */; };
 		1D64089C24A094FC00BD14FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D64089B24A094FC00BD14FF /* Assets.xcassets */; };
 		1D64089F24A094FC00BD14FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D64089D24A094FC00BD14FF /* LaunchScreen.storyboard */; };
 		1D6408A724A0963900BD14FF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6408A624A0963900BD14FF /* MainTabBarController.swift */; };
-		1D6408A924A099A100BD14FF /* SearchMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6408A824A099A100BD14FF /* SearchMusicViewController.swift */; };
 		1D799D0F24A0D19500B76BCF /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D799D0E24A0D19500B76BCF /* SearchResponseModel.swift */; };
 		1D799D1124A0FC9800B76BCF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D799D1024A0FC9800B76BCF /* NetworkService.swift */; };
 		1D8B364A24A484C000CA83D8 /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B364924A484C000CA83D8 /* CMTime + Extension.swift */; };
@@ -46,13 +44,11 @@
 		1D64088F24A094FA00BD14FF /* MyMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D64089224A094FA00BD14FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D64089424A094FA00BD14FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1D64089624A094FA00BD14FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1D64089924A094FA00BD14FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D64089B24A094FC00BD14FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D64089E24A094FC00BD14FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D6408A024A094FC00BD14FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D6408A624A0963900BD14FF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		1D6408A824A099A100BD14FF /* SearchMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicViewController.swift; sourceTree = "<group>"; };
 		1D799D0E24A0D19500B76BCF /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
 		1D799D1024A0FC9800B76BCF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1D8B364924A484C000CA83D8 /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
@@ -131,8 +127,6 @@
 				1DA3579124A1E61B00F57862 /* Helpers */,
 				1D6408A624A0963900BD14FF /* MainTabBarController.swift */,
 				1DB3259424AB12A20041D7F9 /* Library.swift */,
-				1D64089624A094FA00BD14FF /* ViewController.swift */,
-				1D6408A824A099A100BD14FF /* SearchMusicViewController.swift */,
 				1D64089824A094FA00BD14FF /* Main.storyboard */,
 				1D64089B24A094FC00BD14FF /* Assets.xcassets */,
 				1D64089D24A094FC00BD14FF /* LaunchScreen.storyboard */,
@@ -338,8 +332,6 @@
 			files = (
 				1D799D0F24A0D19500B76BCF /* SearchResponseModel.swift in Sources */,
 				1DA3579024A1E60E00F57862 /* UIViewController + Storyboard.swift in Sources */,
-				1D6408A924A099A100BD14FF /* SearchMusicViewController.swift in Sources */,
-				1D64089724A094FA00BD14FF /* ViewController.swift in Sources */,
 				1DA3578B24A1DE3400F57862 /* SearchInteractor.swift in Sources */,
 				1DA9BF1024ACCB0F001C10D7 /* UserDefaults.swift in Sources */,
 				1DA9C32424A22360009BE9E8 /* TrackCell.swift in Sources */,

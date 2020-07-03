@@ -23,6 +23,15 @@ struct Library: View {
                 GeometryReader { geometry in
                     HStack(spacing: 10) {
                         Button(action: {
+                            let keyWindow = UIApplication.shared.connectedScenes
+                                .filter({$0.activationState == .foregroundActive})
+                                .map({$0 as? UIWindowScene})
+                                .compactMap({$0})
+                                .first?.windows
+                                .filter({$0.isKeyWindow}).first
+                            let tabBarVC = keyWindow?.rootViewController as? MainTabBarController
+                            tabBarVC?.trackDetailView.delegate = self
+                            
                             self.track = self.tracks[0]
                             self.tabBarDelegate?.maximizeTrackDetailController(viewModel: self.track)
                         }, label: {
@@ -50,10 +59,19 @@ struct Library: View {
                         LibraryCell(cell: track).gesture(LongPressGesture().onEnded({ (_tracks) in
                             self.track = track
                             self.showAlert = true
-                        }).simultaneously(with: TapGesture().onEnded({ _ in
+                        }).simultaneously(with: TapGesture().onEnded { _ in
+                            let keyWindow = UIApplication.shared.connectedScenes
+                                .filter({$0.activationState == .foregroundActive})
+                                .map({$0 as? UIWindowScene})
+                                .compactMap({$0})
+                                .first?.windows
+                                .filter({$0.isKeyWindow}).first
+                            let tabBarVC = keyWindow?.rootViewController as? MainTabBarController
+                            tabBarVC?.trackDetailView.delegate = self
+                            
                             self.track = track
                             self.tabBarDelegate?.maximizeTrackDetailController(viewModel: self.track)
-                        })))
+                        }))
                     }.onDelete(perform: delete)
                 }
             }.actionSheet(isPresented: $showAlert, content: { () -> ActionSheet in
@@ -112,3 +130,33 @@ struct Library: View {
         }
     }
 }
+
+extension Library: TrackMovingDelegate {
+    
+    func moveBackToPreviousTrack() -> SearchViewModel.Cell? {
+        let index = tracks.firstIndex(of: track)
+        guard let myIndex = index else { return nil }
+        var nextTrack: SearchViewModel.Cell
+        if myIndex - 1 ==  -1 {
+            nextTrack = tracks[tracks.count - 1]
+        } else {
+            nextTrack = tracks[myIndex - 1]
+        }
+        self .track = nextTrack
+        return nextTrack
+    }
+    
+    func moveForwardToNextTrack() -> SearchViewModel.Cell? {
+        let index = tracks.firstIndex(of: track)
+        guard let myIndex = index else { return nil }
+        var nextTrack: SearchViewModel.Cell
+        if myIndex + 1 == tracks.count {
+            nextTrack = tracks[0]
+        } else {
+            nextTrack = tracks[myIndex + 1]
+        }
+        self .track = nextTrack
+        return nextTrack
+    }
+}
+ 
