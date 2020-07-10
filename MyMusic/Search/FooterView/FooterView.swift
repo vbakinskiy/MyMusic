@@ -30,7 +30,7 @@ class FooterView: UIView {
         addSubview(footerLabel)
         addSubview(activityIndicator)
         
-        activityIndicator.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        activityIndicator.topAnchor.constraint(equalTo: topAnchor, constant: UIScreen.main.bounds.height / 2).isActive = true
         activityIndicator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         activityIndicator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         

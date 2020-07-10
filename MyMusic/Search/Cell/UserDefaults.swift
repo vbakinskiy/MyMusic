@@ -14,11 +14,9 @@ extension UserDefaults {
     
     func getSavedTracks() -> [SearchViewModel.Cell] {
         let defaults = UserDefaults.standard
-        guard let savedTracks = defaults.object(forKey: "tracks") as? Data else { return [] }
+        guard let savedTracks = defaults.object(forKey: "trackKey") as? Data else { return [] }
         guard let decodedTracks = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedTracks) as? [SearchViewModel.Cell] else { return [] }
         
         return decodedTracks
     }
-    
-    
 }

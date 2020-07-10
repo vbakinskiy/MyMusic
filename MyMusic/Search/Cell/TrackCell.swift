@@ -71,15 +71,4 @@ class TrackCell: UITableViewCell {
         
         addTrackButton.isHidden = true
     }
-    
-    //@IBAction func showInfo(_ sender: Any) {
-    //    let defaults = UserDefaults.standard
-    //    if let savedTracks = defaults.object(forKey: UserDefaults.trackKey) as? Data {
-    //        if let decodedTracks = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedTracks) as? [SearchViewModel.Cell] {
-    //            decodedTracks.map { (track) in
-    //                print(track.trackName)
-    //            }
-    //        }
-    //    }
-    //}
 }

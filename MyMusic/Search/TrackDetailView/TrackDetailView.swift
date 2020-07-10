@@ -35,7 +35,6 @@ class TrackDetailView: UIView {
     @IBOutlet var miniTrackNameLabel: UILabel!
     @IBOutlet var miniPlayPauseButton: UIButton!
     
-    
     let player:AVPlayer = {
         let avPlayer = AVPlayer()
         avPlayer.automaticallyWaitsToMinimizeStalling = false

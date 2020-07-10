@@ -55,10 +55,6 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         searchController.obscuresBackgroundDuringPresentation = false
     }
     
-    // MARK: Routing
-    
-    
-    
     // MARK:- View lifecycle
     
     override func viewDidLoad() {

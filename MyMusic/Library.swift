@@ -101,7 +101,6 @@ struct Library: View {
         }
     }
     
-    
     struct LibraryCell: View {
         
         var cell: SearchViewModel.Cell
@@ -121,7 +120,6 @@ struct Library: View {
             }
         }
     }
-    
     
     struct Library_Previews: PreviewProvider {
         
@@ -159,4 +157,3 @@ extension Library: TrackMovingDelegate {
         return nextTrack
     }
 }
- 
