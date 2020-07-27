@@ -43,6 +43,8 @@ class MainTabBarController: UITabBarController {
         ]
     }
     
+    //MARK: - Setup
+    
     private func generateVC(rootViewController: UIViewController, image: UIImage, title: String) -> UIViewController {
         let navigationVC = UINavigationController(rootViewController: rootViewController)
         navigationVC.tabBarItem.image = image
@@ -68,6 +70,8 @@ class MainTabBarController: UITabBarController {
         trackDetailView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     }
 }
+
+//MARK: - MainTabBarControllerDelegate
 
 extension MainTabBarController: MainTabBarControllerDelegate {
     

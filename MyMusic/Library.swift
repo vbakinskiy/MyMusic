@@ -129,6 +129,8 @@ struct Library: View {
     }
 }
 
+//MARK: - TrackMovingDelegate
+
 extension Library: TrackMovingDelegate {
     
     func moveBackToPreviousTrack() -> SearchViewModel.Cell? {
